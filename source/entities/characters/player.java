@@ -1,0 +1,3 @@
+public player extends entity {
+
+}
