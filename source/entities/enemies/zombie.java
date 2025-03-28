@@ -1,0 +1,3 @@
+public zombie extends antity {
+
+}
