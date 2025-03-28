@@ -1,5 +1,7 @@
 //Interface to store all the functions in general animals from the game
-public interface animal {
+package src.main.java.source.models;
+
+public interface Animal {
     String getName();
     String getDescription();
     int getHealth();

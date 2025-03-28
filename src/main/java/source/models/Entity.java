@@ -1,15 +1,22 @@
 //abstract class that implements some functions that are general in entities from the game and create the builder
-public abstract class entity implements animal {
+package src.main.java.source.models;
+
+import src.main.java.source.systems.combathandlers.Combat;
+import src.main.java.source.systems.combathandlers.Combatcomponents;
+
+public abstract class Entity implements Animal {
     protected String name;
     protected String description;
     protected int health;
     protected int attack;
     protected int defense;
     protected int speed;
+    protected Combat combat;
 
-    public entity(String name, String description, int health, int attack, int defense, int speed) {
+    public Entity(String name, String description, int health, int attack, int defense, int speed) {
         this.name = name; this.description = description; this.attack = attack;
         this.health = health; this.defense = defense; this.speed = speed;
+        this.combat = new Combatcomponents();
     }
 
     @Override 
@@ -52,5 +59,12 @@ public abstract class entity implements animal {
     @Override
     public boolean isAlive() {
         return (this.health > 0);
+    }
+    
+    public void attack(Entity target) {
+        if(!this.combat.canAttack(this, target)) {
+            return;
+        }
+        this.combat.attack(this, target);
     }
 }   
